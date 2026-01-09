@@ -652,7 +652,7 @@ abstract class FormFlow implements FormFlowInterface {
 			$reset = true;
 		}
 
-		if (in_array($request->getMethod(), ['POST', 'PUT'], true) && $request->get($this->getFormStepKey()) !== null && !$this->dataManager->exists($this)) {
+		if (in_array($request->getMethod(), ['POST', 'PUT'], true) && $request->request->get($this->getFormStepKey()) !== null && !$this->dataManager->exists($this)) {
 			// flow is expired, drop posted data and reset
 			$request->request->replace();
 			$reset = true;
