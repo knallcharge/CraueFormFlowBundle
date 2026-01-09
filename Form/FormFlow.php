@@ -625,7 +625,8 @@ abstract class FormFlow implements FormFlowInterface {
 		$instanceId = null;
 
 		if ($this->allowDynamicStepNavigation || $this->allowRedirectAfterSubmit) {
-			$instanceId = $request->get($this->getDynamicStepNavigationInstanceParameter());
+            $requestData = in_array($request->getMethod(), ['POST', 'PUT'], true) ? $request->request : $request->query;
+			$instanceId = $requestData->get($this->getDynamicStepNavigationInstanceParameter());
 		}
 
 		if ($instanceId === null) {
