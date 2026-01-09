@@ -539,7 +539,7 @@ abstract class FormFlow implements FormFlowInterface {
 				return intval($request->request->get($this->getFormStepKey(), $defaultStepNumber));
 			case 'GET':
 				return $this->allowDynamicStepNavigation || $this->allowRedirectAfterSubmit ?
-						intval($request->get($this->dynamicStepNavigationStepParameter, $defaultStepNumber)) :
+						intval($request->query->get($this->dynamicStepNavigationStepParameter, $defaultStepNumber)) :
 						$defaultStepNumber;
 		}
 
